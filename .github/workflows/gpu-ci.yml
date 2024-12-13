@@ -78,6 +78,10 @@ jobs:
         working-directory: .github/workflows
         run: pixi run build
 
-      - name: Run array types tests
+      - name: Run PyTorch GPU tests
         working-directory: .github/workflows
-        run: pixi run -e torch-cuda test-torch-cuda -v -s linalg  # TODO: use XP_TESTS env var
+        run: pixi run -e torch-cuda test-torch-cuda -v -t scipy.ndimage -t scipy.fft  # TODO: use XP_TESTS env var
+
+      - name: Run CuPy tests
+        working-directory: .github/workflows
+        run: pixi run -e cupy test-cupy -v -t scipy.ndimage -t scipy.fft
