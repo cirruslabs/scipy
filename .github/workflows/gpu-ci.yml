@@ -61,14 +61,18 @@ jobs:
         uses: cirruslabs/cache@v4  #caa3ad0624c6c2acd8ba50ad452d1f44bba078bb # v4
         with:
           path: ${{ env.PIXI_CACHE_DIR }}
-          key: ${{ runner.os }}-gpu
+          key: ${{ runner.os }}-gpu-pixi
+
+      - name: Setup compiler cache
+        uses: cirruslabs/cache@v4  #caa3ad0624c6c2acd8ba50ad452d1f44bba078bb # v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ${{ runner.os }}-gpu-ccache
 
       - uses: prefix-dev/setup-pixi@ba3bb36eb2066252b2363392b7739741bb777659 # v0.8.1
         with:
           pixi-version: v0.39.2
           manifest-path: .github/workflows/pixi.toml
-          #cache: true
-          #cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
       - name: Build SciPy
         working-directory: .github/workflows
@@ -76,4 +80,4 @@ jobs:
 
       - name: Run array types tests
         working-directory: .github/workflows
-        run: pixi run -e torch-cuda test-torch-cuda -v -s cluster  # TODO: use XP_TESTS env var
+        run: pixi run -e torch-cuda test-torch-cuda -v -s linalg  # TODO: use XP_TESTS env var
