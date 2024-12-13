@@ -596,6 +596,7 @@ class TestMapCoordinates:
         assert out.dtype is np.dtype('f')
         assert_array_almost_equal(out, xp.asarray([[1]]))
 
+    @skip_xp_backends(np_only=True, reason='Fails for CuPy locally, hangs in CI')
     @pytest.mark.skipif('win32' in sys.platform or np.intp(0).itemsize < 8,
                         reason='do not run on 32 bit or windows '
                                '(no sparse memory)')
