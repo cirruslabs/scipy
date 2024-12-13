@@ -110,6 +110,8 @@ jaxlib = { version = "*", build = "*cuda*" }
 [feature.jax-base.tasks]
 test-jax = { cmd = "python dev.py test -b jax.numpy", cwd = "../.." }
 
+[feature.jax-cuda.tasks]
+test-jax-cuda = { cmd = "python dev.py test -b jax.numpy", cwd = "../..", env = { SCIPY_DEVICE = "cuda" } }
 
 [feature.array_api_strict.dependencies]
 array-api-strict = "*"

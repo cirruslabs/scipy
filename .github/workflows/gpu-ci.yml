@@ -82,6 +82,10 @@ jobs:
         working-directory: .github/workflows
         run: pixi run -e torch-cuda test-torch-cuda -v -t scipy.ndimage -t scipy.fft  # TODO: use XP_TESTS env var
 
+      - name: Run JAX GPU tests
+        working-directory: .github/workflows
+        run: pixi run -e jax-cuda test-jax-cuda -v -t scipy.ndimage -t scipy.fft
+
       - name: Run CuPy tests
         working-directory: .github/workflows
         run: pixi run -e cupy test-cupy -v -t scipy.ndimage -t scipy.fft
