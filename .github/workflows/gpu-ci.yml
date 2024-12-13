@@ -76,4 +76,4 @@ jobs:
 
       - name: Run array types tests
         working-directory: .github/workflows
-        run: pixi run -e torch-cuda test-torch -v -s cluster  # TODO: use XP_TESTS env var
+        run: pixi run -e torch-cuda test-torch-cuda -v -s cluster  # TODO: use XP_TESTS env var
