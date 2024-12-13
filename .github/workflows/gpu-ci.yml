@@ -58,7 +58,7 @@ jobs:
           submodules: recursive
 
       - name: Cache pixi
-        uses: cirruslabs/cache@caa3ad0624c6c2acd8ba50ad452d1f44bba078bb # v4
+        uses: cirruslabs/cache@v4  #caa3ad0624c6c2acd8ba50ad452d1f44bba078bb # v4
         with:
           path: ${{ env.PIXI_CACHE_DIR }}
           key: ${{ runner.os }}-gpu
