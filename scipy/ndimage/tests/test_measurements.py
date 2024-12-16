@@ -378,6 +378,7 @@ def test_label_output_wrong_size(xp):
                       ndimage.label, data, output=output)
 
 
+@skip_xp_backends("jax.numpy", reason='JAX hangs in GPU CI job')
 def test_label_structuring_elements(xp):
     data = np.loadtxt(os.path.join(os.path.dirname(
         __file__), "data", "label_inputs.txt"))
