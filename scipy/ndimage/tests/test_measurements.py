@@ -367,7 +367,7 @@ def test_label_output_dtype(xp):
 
 def test_label_output_wrong_size(xp):
     if is_jax(xp):
-        pytest.xfail("JAX does not raise")
+        pytest.skip("JAX does not raise")
 
     data = xp.ones([5])
     for t in types:
